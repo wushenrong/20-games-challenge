@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c8abu2x4l2tr3"]
+
+[ext_resource type="Script" uid="uid://cpsvhwr37qqcf" path="res://Ball/ball.gd" id="1_l4sn5"]
+[ext_resource type="AudioStream" uid="uid://den3yj18xg675" path="res://Ball/boop.ogg" id="2_65gad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3thm"]
+size = Vector2(16, 16)
+
+[node name="Ball" type="Area2D" unique_id=1730856893]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_l4sn5")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1935361971]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=787449284]
+shape = SubResource("RectangleShape2D_g3thm")
+
+[node name="BounceSound" type="AudioStreamPlayer2D" parent="." unique_id=2076277149]
+stream = ExtResource("2_65gad")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

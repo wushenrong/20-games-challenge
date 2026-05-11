@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c1w2njx1v8o87"]
+
+[ext_resource type="PackedScene" uid="uid://citboipqpx4kg" path="res://Wall/wall.tscn" id="1_eunhr"]
+[ext_resource type="Script" uid="uid://ci2qte1wbjnan" path="res://Main/main.gd" id="1_k3v36"]
+[ext_resource type="PackedScene" uid="uid://ckggp6qmp3tp7" path="res://PlayerPaddle/player_paddle.tscn" id="2_k3v36"]
+[ext_resource type="PackedScene" uid="uid://3wnce5gs4kw7" path="res://OpponentPaddle/opponent_paddle.tscn" id="3_liyct"]
+[ext_resource type="PackedScene" uid="uid://c8abu2x4l2tr3" path="res://Ball/ball.tscn" id="4_ib3t1"]
+[ext_resource type="PackedScene" uid="uid://b7qcuwxiylaat" path="res://Goal/goal.tscn" id="6_liyct"]
+[ext_resource type="PackedScene" uid="uid://gw4swuw40nf8" path="res://HUD/hud.tscn" id="7_ib3t1"]
+
+[node name="Main" type="Node" unique_id=2130195370]
+script = ExtResource("1_k3v36")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=99481770]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -360.0
+offset_right = 540.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="UpperWall" parent="." unique_id=2069775162 instance=ExtResource("1_eunhr")]
+position = Vector2(540, 32)
+
+[node name="LowerWall" parent="." unique_id=2018045437 instance=ExtResource("1_eunhr")]
+position = Vector2(540, 688)
+
+[node name="PlayerPaddle" parent="." unique_id=407656290 instance=ExtResource("2_k3v36")]
+position = Vector2(148, 360)
+
+[node name="PlayerStartLocation" type="Marker2D" parent="." unique_id=1443474890]
+position = Vector2(148, 360)
+
+[node name="OpponentPaddle" parent="." unique_id=459943011 instance=ExtResource("3_liyct")]
+position = Vector2(932, 360)
+motion_mode = 1
+
+[node name="OpponentStartLocation" type="Marker2D" parent="." unique_id=1253870885]
+position = Vector2(932, 360)
+
+[node name="Ball" parent="." unique_id=1730856893 instance=ExtResource("4_ib3t1")]
+position = Vector2(540, 360)
+
+[node name="BallStartLocation" type="Marker2D" parent="." unique_id=1772713769]
+position = Vector2(540, 360)
+
+[node name="PlayerGoal" parent="." unique_id=1530272887 instance=ExtResource("6_liyct")]
+position = Vector2(45, 360)
+
+[node name="OpponentGoal" parent="." unique_id=863179470 instance=ExtResource("6_liyct")]
+position = Vector2(1035, 360)
+
+[node name="HUD" parent="." unique_id=2144968241 instance=ExtResource("7_ib3t1")]
+
+[connection signal="scored" from="Ball" to="." method="_on_ball_scored"]

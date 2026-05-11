@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://gw4swuw40nf8"]
+
+[ext_resource type="Script" uid="uid://cjh5dqa1eh0x5" path="res://HUD/hud.gd" id="1_h61sl"]
+[ext_resource type="Texture2D" uid="uid://lb2nc8nbwq35" path="res://HUD/dotted_line.png" id="2_mi5n8"]
+
+[node name="HUD" type="CanvasLayer" unique_id=2144968241]
+script = ExtResource("1_h61sl")
+
+[node name="PlayerScore" type="Label" parent="." unique_id=890774459]
+offset_left = 460.0
+offset_top = 64.0
+offset_right = 500.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OpponentScore" type="Label" parent="." unique_id=119795459]
+offset_left = 576.0
+offset_top = 64.0
+offset_right = 616.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="." unique_id=911167687]
+texture_filter = 1
+texture_repeat = 2
+points = PackedVector2Array(540, 32, 540, 688)
+width = 8.0
+texture = ExtResource("2_mi5n8")
+texture_mode = 1
