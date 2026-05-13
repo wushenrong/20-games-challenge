@@ -25,24 +25,32 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="UpperWall" parent="." unique_id=2069775162 instance=ExtResource("1_eunhr")]
+[node name="UpperWall" parent="." unique_id=2069775162 groups=["walls"] instance=ExtResource("1_eunhr")]
 position = Vector2(540, 32)
 
-[node name="LowerWall" parent="." unique_id=2018045437 instance=ExtResource("1_eunhr")]
+[node name="LowerWall" parent="." unique_id=2018045437 groups=["walls"] instance=ExtResource("1_eunhr")]
 position = Vector2(540, 688)
 
-[node name="PlayerPaddle" parent="." unique_id=407656290 instance=ExtResource("2_k3v36")]
+[node name="PlayerPaddle" parent="." unique_id=407656290 groups=["paddles", "player"] instance=ExtResource("2_k3v36")]
 position = Vector2(148, 360)
 
-[node name="PlayerStartLocation" type="Marker2D" parent="." unique_id=1443474890]
+[node name="PlayerStartLocation" type="Marker2D" parent="." unique_id=1443474890 groups=["player"]]
 position = Vector2(148, 360)
 
-[node name="OpponentPaddle" parent="." unique_id=459943011 instance=ExtResource("3_liyct")]
+[node name="PlayerGoal" parent="." unique_id=1530272887 groups=["goals", "player"] instance=ExtResource("6_liyct")]
+position = Vector2(45, 360)
+collision_mask = 4
+
+[node name="OpponentPaddle" parent="." unique_id=459943011 groups=["opponent", "paddles"] instance=ExtResource("3_liyct")]
 position = Vector2(932, 360)
 motion_mode = 1
 
-[node name="OpponentStartLocation" type="Marker2D" parent="." unique_id=1253870885]
+[node name="OpponentStartLocation" type="Marker2D" parent="." unique_id=1253870885 groups=["opponent"]]
 position = Vector2(932, 360)
+
+[node name="OpponentGoal" parent="." unique_id=863179470 groups=["goals", "opponent"] instance=ExtResource("6_liyct")]
+position = Vector2(1035, 360)
+collision_mask = 4
 
 [node name="Ball" parent="." unique_id=1730856893 instance=ExtResource("4_ib3t1")]
 position = Vector2(540, 360)
@@ -50,12 +58,7 @@ position = Vector2(540, 360)
 [node name="BallStartLocation" type="Marker2D" parent="." unique_id=1772713769]
 position = Vector2(540, 360)
 
-[node name="PlayerGoal" parent="." unique_id=1530272887 instance=ExtResource("6_liyct")]
-position = Vector2(45, 360)
-
-[node name="OpponentGoal" parent="." unique_id=863179470 instance=ExtResource("6_liyct")]
-position = Vector2(1035, 360)
-
 [node name="HUD" parent="." unique_id=2144968241 instance=ExtResource("7_ib3t1")]
 
-[connection signal="scored" from="Ball" to="." method="_on_ball_scored"]
+[connection signal="body_entered" from="PlayerGoal" to="." method="_on_player_goal_body_entered"]
+[connection signal="body_entered" from="OpponentGoal" to="." method="_on_opponent_goal_body_entered"]
