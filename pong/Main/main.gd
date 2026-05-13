@@ -1,8 +1,8 @@
 extends Node
 
 
-var player_score = 0
-var opponent_score = 0
+var player_score: int = 0
+var opponent_score: int = 0
 
 
 # Called when the node enters the scene tree for the first time.
