@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dvu7r8uwde23f"]
+
+[ext_resource type="Script" uid="uid://xvudv2rfd25p" path="res://Brick/brick.gd" id="1_wurha"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mn6gn"]
+size = Vector2(50, 16)
+
+[node name="Brick" type="StaticBody2D" unique_id=765678127 groups=["bricks"]]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_wurha")
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1341609638]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -8.0
+offset_right = 25.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=57668291]
+shape = SubResource("RectangleShape2D_mn6gn")

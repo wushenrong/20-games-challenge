@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b5iot4dqc7fgi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ctr1"]
+size = Vector2(16, 576)
+
+[node name="Wall" type="StaticBody2D" unique_id=1171794641]
+collision_layer = 4
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1824135688]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -288.0
+offset_right = 8.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=50580199]
+shape = SubResource("RectangleShape2D_0ctr1")

@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://b28s2m651bjcd"]
+
+[ext_resource type="Script" uid="uid://cch3uokab04io" path="res://HUD/hud.gd" id="1_h61sl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4t24e"]
+bg_color = Color(0.7469797, 0.74697965, 0.7469794, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h61sl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mi5n8"]
+bg_color = Color(0.86323947, 0.86323947, 0.86323935, 1)
+
+[node name="HUD" type="CanvasLayer" unique_id=698942978]
+script = ExtResource("1_h61sl")
+
+[node name="ScoreText" type="Label" parent="." unique_id=29920728]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -490.0
+offset_right = -290.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=962369078]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -280.0
+offset_right = -170.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestScoreText" type="Label" parent="." unique_id=998825829]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_right = 40.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Best:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestScoreLabel" type="Label" parent="." unique_id=1796122631]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 50.0
+offset_right = 160.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LivesText" type="Label" parent="." unique_id=1361978484]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 250.0
+offset_right = 430.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Lives:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LivesLabel" type="Label" parent="." unique_id=1743723872]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 450.0
+offset_right = 490.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Message" type="Label" parent="." unique_id=16309031]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = 40.0
+offset_right = 175.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Breakout!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MessageTimer" type="Timer" parent="." unique_id=1697723488]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartButton" type="Button" parent="." unique_id=1253739827]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -180.0
+offset_right = 100.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_4t24e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h61sl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mi5n8")
+text = "Start"
+
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

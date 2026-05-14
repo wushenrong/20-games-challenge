@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://b50esatj28uku"]
+
+[ext_resource type="PackedScene" uid="uid://dp30wu00cnh43" path="res://Ceiling/ceiling.tscn" id="1_2w1kt"]
+[ext_resource type="Script" uid="uid://cq71odqow42gr" path="res://Main/main.gd" id="1_k3v36"]
+[ext_resource type="PackedScene" uid="uid://t7e048txbqq" path="res://Paddle/paddle.tscn" id="1_yh5la"]
+[ext_resource type="PackedScene" uid="uid://dvu7r8uwde23f" path="res://Brick/brick.tscn" id="2_liyct"]
+[ext_resource type="PackedScene" uid="uid://b5iot4dqc7fgi" path="res://Wall/wall.tscn" id="2_qvhan"]
+[ext_resource type="PackedScene" uid="uid://c3arr2135u626" path="res://Ball/ball.tscn" id="4_eunhr"]
+[ext_resource type="PackedScene" uid="uid://b28s2m651bjcd" path="res://HUD/hud.tscn" id="7_ib3t1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_liyct"]
+size = Vector2(932, 32)
+
+[node name="Main" type="Node" unique_id=954501210]
+script = ExtResource("1_k3v36")
+brick_scene = ExtResource("2_liyct")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=834382237]
+offset_right = 1080.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="Ceiling" parent="." unique_id=1171794641 groups=["ceiling"] instance=ExtResource("1_2w1kt")]
+position = Vector2(540, 90)
+
+[node name="LeftWall" parent="." unique_id=2048769330 groups=["walls"] instance=ExtResource("2_qvhan")]
+position = Vector2(82, 370)
+
+[node name="RightWall" parent="." unique_id=936381605 groups=["walls"] instance=ExtResource("2_qvhan")]
+position = Vector2(998, 370)
+
+[node name="PaddleStartLocation" type="Marker2D" parent="." unique_id=1366405298]
+position = Vector2(540, 600)
+
+[node name="Paddle" parent="." unique_id=1295669481 groups=["paddle"] instance=ExtResource("1_yh5la")]
+position = Vector2(540, 600)
+
+[node name="BallStartLocation" type="Marker2D" parent="." unique_id=1632360731]
+position = Vector2(540, 500)
+
+[node name="Ball" parent="." unique_id=2129000823 instance=ExtResource("4_eunhr")]
+position = Vector2(540, 500)
+
+[node name="MissArea" type="Area2D" parent="." unique_id=471315182]
+position = Vector2(540, 690)
+collision_layer = 32
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MissArea" unique_id=1550925054]
+shape = SubResource("RectangleShape2D_liyct")
+
+[node name="HUD" parent="." unique_id=698942978 instance=ExtResource("7_ib3t1")]
+
+[connection signal="brick_hit" from="Ball" to="." method="_on_ball_brick_hit"]
+[connection signal="body_entered" from="MissArea" to="." method="_on_miss_area_body_entered"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
